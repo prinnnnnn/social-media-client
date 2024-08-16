@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { Post, User } from '../common/types';
 
-const initialState = {
+export interface State {
+    mode: "light" | "dark",
+    user: User | null,
+    token: string | null,
+    posts: Post[],
+}
+
+const initialState: State = {
     mode: "light",
     user: null,
     token: null,
@@ -43,4 +51,4 @@ export const authSlice = createSlice({
 })
 
 export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } = authSlice.actions;
-export const authReducers = authSlice.reducers;
+export const authReducers = authSlice.reducer;
