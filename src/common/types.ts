@@ -24,3 +24,13 @@ export interface User {
     viewedProfile: number,
     impressions: number
 }
+
+export interface UserFormProps {
+    firstName?: string
+    lastName?: string
+    email: string
+    password: string
+    location?: string
+    occupation?: string
+    picture?: string | File
+}
