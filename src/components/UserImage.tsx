@@ -1,13 +1,14 @@
 import React from "react";
 import { Box } from "@mui/material";
+import { useAppSelector } from "../state/hooks";
 
 interface UserImageProps {
-    image: string,
     size?: string,
 }
 
-const UserIamge: React.FC<UserImageProps> = ({ image, size = "60px"}) => {
+const UserImage: React.FC<UserImageProps> = ({ size = "60px"}) => {
 
+    const image = useAppSelector(state => state.user?.picturePath);
     console.log(`Fetching image from http://localhost:3001/assets/${image}`);
 
     return (
@@ -23,4 +24,4 @@ const UserIamge: React.FC<UserImageProps> = ({ image, size = "60px"}) => {
     )
 };
 
-export default UserIamge;
+export default UserImage;

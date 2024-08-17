@@ -8,7 +8,7 @@ import {
     MenuItem,
     FormControl,
     useTheme,
-    useMediaQuery,
+    
 } from "@mui/material";
 
 import {
@@ -27,6 +27,7 @@ import { setMode, setLogout } from "../state";
 import { useNavigate } from "react-router-dom";
 import FlexBetween from "../components/FlexBetween";
 import { AppTheme } from "../theme";
+import { useMobileScreen } from "../components/hooks";
 
 const NavBar = () => {
     const [isMobileMenuToggled, setIsMobileMenuToggled] =
@@ -34,7 +35,7 @@ const NavBar = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const user = useAppSelector((state) => state.user);
-    const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
+    const isNonMobileScreens = useMobileScreen(1000);
 
     const theme = useTheme() as AppTheme;
     const neutralLight = theme.palette.neutral.light;

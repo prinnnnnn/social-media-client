@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 
 /* Custom Components */
-import UserIamge from "./UserIamge";
+import UserIamge from "./UserImage";
 import FlexBetween from "./FlexBetween";
 import WidgetWrapper from "./WidgetWrapper";
 
@@ -69,7 +69,6 @@ const UserWidget = () => {
         viewedProfile,
         impressions,
         friends,
-        picturePath
     } = user;
 
     return (
@@ -81,7 +80,7 @@ const UserWidget = () => {
                 onClick={() => navigate(`profile/${userId}`)}
             >
                 <FlexBetween gap="1rem">
-                    <UserIamge image={picturePath} />
+                    <UserIamge />
                     <Box>
                         <Typography
                             variant="h4"

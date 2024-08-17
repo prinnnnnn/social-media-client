@@ -2,6 +2,7 @@ import { Box, useMediaQuery } from '@mui/material'
 import NavBar from './NavBar'
 // import { useAppSelector } from '../state/hooks';
 import UserWidget from '../components/UserWidget';
+import MyPostWidget from '../components/MyPostWidget';
 
 const HomePage = () => {
 
@@ -26,7 +27,7 @@ const HomePage = () => {
                     flexBasis={isNonMobileScreen ? "42%" : undefined}
                     mt={isNonMobileScreen ? undefined : "2rem"}    
                 >
-                    
+                    <MyPostWidget />
                 </Box>
 
                 {isNonMobileScreen && (

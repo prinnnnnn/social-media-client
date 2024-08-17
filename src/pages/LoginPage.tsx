@@ -1,11 +1,11 @@
-import React from "react";
-import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { AppTheme } from "../theme";
 import Form from "../components/LoginForm";
+import { useMobileScreen } from "../components/hooks";
 
 const LoginPage = () => {
     const theme = useTheme<AppTheme>();
-    const isNonMobileScreen = useMediaQuery("(min-width: 1000px)");
+    const isNonMobileScreen = useMobileScreen(1000);
 
     return (
         <Box>
