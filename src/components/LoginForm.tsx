@@ -74,6 +74,8 @@ const LoginForm = () => {
 
         const { data } = await axios.post("http://localhost:3001/auth/register", formData);
         
+        // console.log(`Finish Register, data: ${data}`);
+
         onSubmitProps.resetForm();
 
         if (data) {
@@ -84,13 +86,18 @@ const LoginForm = () => {
 
     const login = async (values: UserFormProps, onSubmitProps: FormikHelpers<UserFormProps>) => {
 
-        const { data } = await axios.post("http://localhost:3001/auth/login", values);
+        const { email, password } = values;
+        const { data } = await axios.post("http://localhost:3001/auth/login",
+                                         { email, password },
+                                         { headers: { "Content-Type": "application/json" }});
 
         onSubmitProps.resetForm();
 
-        if (data) {
+        const { user, token } = data;
+
+        if (user && token) {
             dispatch(
-                setLogin({ user: data.user, token: data.token })
+                setLogin({ user, token })
             )
         }
 
