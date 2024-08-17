@@ -1,13 +1,12 @@
-import { Box, useMediaQuery } from '@mui/material'
+import { Box } from '@mui/material'
 import NavBar from './NavBar'
-// import { useAppSelector } from '../state/hooks';
 import UserWidget from '../components/UserWidget';
 import MyPostWidget from '../components/MyPostWidget';
+import { useMobileScreen } from '../components/hooks';
 
 const HomePage = () => {
 
-    const isNonMobileScreen = useMediaQuery("(min-width: 1000px)");
-    // const { _id, picturePath } = useAppSelector(state => state.user)!;
+    const isNonMobileScreen = useMobileScreen(1000);
 
     return (
         <Box>

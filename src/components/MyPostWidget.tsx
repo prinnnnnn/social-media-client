@@ -30,6 +30,7 @@ import { setPosts } from "../state";
 import { AppTheme } from "../theme";
 import { useMobileScreen } from "./hooks";
 import axios from "axios";
+import { backendIpAddress } from "../services/url";
 
 const MyPostWidget = () => {
     const dispatch = useAppDispatch();
@@ -55,7 +56,7 @@ const MyPostWidget = () => {
         }
 
         const { data } = await axios.post(
-            `http://localhost:3001/posts/`,
+            `${backendIpAddress}/posts/`,
             formData,
             { headers: { Authorization: `Bearer ${token}` } }
         );

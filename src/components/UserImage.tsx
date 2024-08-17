@@ -1,15 +1,22 @@
 import React from "react";
 import { Box } from "@mui/material";
 import { useAppSelector } from "../state/hooks";
+import { backendIpAddress } from "../services/url";
 
 interface UserImageProps {
+    picturePath?: string,
     size?: string,
 }
 
-const UserImage: React.FC<UserImageProps> = ({ size = "60px"}) => {
+const UserImage: React.FC<UserImageProps> = ({ picturePath, size = "60px"}) => {
 
+    
     const image = useAppSelector(state => state.user?.picturePath);
-    console.log(`Fetching image from http://localhost:3001/assets/${image}`);
+
+    if (!picturePath)
+        picturePath = image;
+
+    console.log(`Fetching image from ${backendIpAddress}/assets/${picturePath}`);
 
     return (
         <Box width={size} height={size}>
@@ -18,7 +25,7 @@ const UserImage: React.FC<UserImageProps> = ({ size = "60px"}) => {
                 width={size}
                 height={size}
                 alt="user"
-                src={`http://localhost:3001/assets/${image}`}
+                src={`${backendIpAddress}/assets/${picturePath}`}
             />
         </Box>
     )

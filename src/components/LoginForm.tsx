@@ -19,6 +19,7 @@ import FlexBetween from "./FlexBetween";
 import { AppTheme } from "../theme";
 import axios from "axios";
 import { UserFormProps } from "../common/types";
+import { backendIpAddress } from "../services/url";
 
 const registerSchema = yup.object().shape({
     firstName: yup.string().required("required"),
@@ -72,7 +73,7 @@ const LoginForm = () => {
 
         formData.append('picturePath', values.picture.name);
 
-        const { data } = await axios.post("http://localhost:3001/auth/register", formData);
+        const { data } = await axios.post(`${backendIpAddress}/auth/register`, formData);
         
         // console.log(`Finish Register, data: ${data}`);
 
@@ -87,7 +88,7 @@ const LoginForm = () => {
     const login = async (values: UserFormProps, onSubmitProps: FormikHelpers<UserFormProps>) => {
 
         const { email, password } = values;
-        const { data } = await axios.post("http://localhost:3001/auth/login",
+        const { data } = await axios.post(`${backendIpAddress}/auth/login`,
                                          { email, password },
                                          { headers: { "Content-Type": "application/json" }});
 

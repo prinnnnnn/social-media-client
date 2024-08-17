@@ -34,6 +34,7 @@ import { useNavigate } from "react-router-dom";
 import { AppTheme } from "../theme";
 import axios from "axios";
 import { User } from "../common/types";
+import { backendIpAddress } from "../services/url";
 
 const UserWidget = () => {
 
@@ -48,14 +49,14 @@ const UserWidget = () => {
     const main = palette.neutral.main;
 
     const getUser = async () => {
-        const { data } = await axios.get(`http://localhost:3001/user/${userId}`,
+        const { data } = await axios.get(`${backendIpAddress}/user/${userId}`,
                                          { headers: { Authorization: `Bearer ${token}`}});
         setUser(data);
     }
 
     useEffect(() => {
         getUser();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (!user) {
         return null;

@@ -1,0 +1,1 @@
+export const backendIpAddress = `http://localhost:3001`;
