@@ -16,7 +16,7 @@ const UserImage: React.FC<UserImageProps> = ({ picturePath, size = "60px"}) => {
     if (!picturePath)
         picturePath = image;
 
-    console.log(`Fetching image from ${backendIpAddress}/assets/${picturePath}`);
+    // console.log(`Fetching image from ${backendIpAddress}/assets/${picturePath}`);
 
     return (
         <Box width={size} height={size}>

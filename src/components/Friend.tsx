@@ -37,8 +37,8 @@ const Friend: React.FC<FriendProps> = ({ friendId, name, subtitle, userPicturePa
 
     const patchFriend = async () => {
         const { data } = await axios.patch(`${backendIpAddress}/user/${userId}/${friendId}`, 
-                                            { headers: { Authorization: `Bearer ${token}`}}
-        )
+                                            {}, { headers: { "Authorization": `Bearer ${token}`}}
+        );
         dispatch(setFriends({ friends: data }));
     }
 

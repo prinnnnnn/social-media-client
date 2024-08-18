@@ -14,7 +14,7 @@ const PostsWidget = ({ isProfile = false }) => {
 
     const getPosts = async () => {
         const { data } = await axios.get(`${backendIpAddress}/posts`, 
-                        { headers: { Authorization: `Bearer ${token}`}});
+            { headers: { Authorization: `Bearer ${token}`}});
 
         dispatch(setPosts({ posts: data }));
 
@@ -31,19 +31,18 @@ const PostsWidget = ({ isProfile = false }) => {
     }
     
     useEffect(() => {
-        if (isProfile) {
-            getUserPosts();
-        } else {
-            getPosts();
-        }
+
+        isProfile ? getUserPosts() : getPosts();
+
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
     return (
         <>
-            {posts.map((post) => (
+            {posts.map((post, i) => (
                 <PostWidget
                     key={post._id}
+                    index={i}
                     post={post}
                 />
             ))}

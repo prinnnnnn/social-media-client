@@ -73,7 +73,7 @@ const MyPostWidget = () => {
                 <InputBase
                     placeholder="What's on your mind?"
                     onChange={(e) => setPost(e.target.value)}
-                    value={post}
+                    value={post ? post : ""}
                     sx={{
                         width: "100%",
                         bgcolor: palette.neutral.light,

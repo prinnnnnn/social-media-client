@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import UserWidget from '../components/UserWidget';
 import MyPostWidget from '../components/MyPostWidget';
 import { useMobileScreen } from '../components/hooks';
+import PostsWidget from '../components/PostsWidget';
 
 const HomePage = () => {
 
@@ -27,6 +28,7 @@ const HomePage = () => {
                     mt={isNonMobileScreen ? undefined : "2rem"}    
                 >
                     <MyPostWidget />
+                    <PostsWidget />
                 </Box>
 
                 {isNonMobileScreen && (

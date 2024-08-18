@@ -7,7 +7,9 @@ export interface Post {
     description: string,
     picturePath: string,
     userPicturePath: string,
-    likes: Map<string, boolean>,
+    likes: {
+        [key: string]: boolean;
+    },
     comments: string[]
 }
 
