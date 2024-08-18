@@ -49,7 +49,7 @@ const Friend: React.FC<FriendProps> = ({ friendId, name, subtitle, userPicturePa
                 <Box
                     onClick={() => {
                         {/* 4:43 */}
-                        navigate(`profile/${friendId}`);
+                        navigate(`../profile/${friendId}`);
                         navigate(0);
                     }}
                 >

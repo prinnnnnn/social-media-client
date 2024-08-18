@@ -1,11 +1,15 @@
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../state/hooks";
 import { setPosts } from "../state/index";
 import PostWidget from "./PostWidget";
 import axios from "axios";
 import { backendIpAddress } from "../services/url";
 
-const PostsWidget = ({ isProfile = false }) => {
+interface PostsWidgetProps {
+    isProfile?: boolean,
+}
+
+const PostsWidget: FC<PostsWidgetProps> = ({ isProfile = false }) => {
 
     const dispatch = useAppDispatch();
     const userId = useAppSelector(state => state.user?._id);

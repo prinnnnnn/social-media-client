@@ -10,13 +10,8 @@ interface UserImageProps {
 
 const UserImage: React.FC<UserImageProps> = ({ picturePath, size = "60px"}) => {
 
-    
     const image = useAppSelector(state => state.user?.picturePath);
-
-    if (!picturePath)
-        picturePath = image;
-
-    // console.log(`Fetching image from ${backendIpAddress}/assets/${picturePath}`);
+    if (!picturePath) picturePath = image;
 
     return (
         <Box width={size} height={size}>

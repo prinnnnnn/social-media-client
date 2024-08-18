@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 // @ts-ignore
 import linkedInIconPath from "../assets/linkedin.png"
@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 
 /* Custom Components */
-import UserIamge from "./UserImage";
+import UserImage from "./UserImage";
 import FlexBetween from "./FlexBetween";
 import WidgetWrapper from "./WidgetWrapper";
 
@@ -36,17 +36,27 @@ import axios from "axios";
 import { User } from "../common/types";
 import { backendIpAddress } from "../services/url";
 
-const UserWidget = () => {
+interface UserWidgetProps {
+    userId?: string,
+    picturePath?: string, 
+}
+
+const UserWidget: FC<UserWidgetProps> = ({ userId, picturePath }) => {
 
     const [user, setUser] = useState<User | null>(null);
-    const userId = useAppSelector(state => state.user?._id);
+    const loggedInUserId = useAppSelector(state => state.user?._id);
+
     // const user = useAppSelector(state => state.user);
     const { palette } = useTheme<AppTheme>();
     const navigate = useNavigate();
     const token = useAppSelector((state) => state.token);
+    const image = useAppSelector(state => state.user?.picturePath);
     const dark = palette.neutral.dark;
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
+    
+    if (!userId) userId = loggedInUserId;
+    if (!picturePath) picturePath = image;
 
     const getUser = async () => {
         const { data } = await axios.get(`${backendIpAddress}/user/${userId}`,
@@ -78,10 +88,10 @@ const UserWidget = () => {
             <FlexBetween
                 gap="0.5rem"
                 pb="1.1rem"
-                onClick={() => navigate(`profile/${userId}`)}
+                onClick={() => navigate(`../profile/${userId}`)}
             >
                 <FlexBetween gap="1rem">
-                    <UserIamge />
+                    <UserImage picturePath={picturePath}/>
                     <Box>
                         <Typography
                             variant="h4"
