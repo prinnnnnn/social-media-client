@@ -47,7 +47,14 @@ const NavBar = () => {
     const fullName = `${user?.firstName} ${user?.lastName}`;
 
     return (
-        <FlexBetween padding="1rem 6%" bgcolor={alt}>
+        <FlexBetween padding="1rem 6%" bgcolor={alt}
+            style={{
+                width: "100%",
+                position: "fixed",
+                zIndex: 1000,
+                top: 0,
+            }}
+        >
             <FlexBetween gap="1.75rem">
                 <Typography
                     fontWeight="bold"
@@ -111,7 +118,7 @@ const NavBar = () => {
                                         backgroundColor: neutralLight,
                                     },
                                 }}
-                                input={<InputBase />}
+                                input={<InputBase value={fullName}/>}
                             >
                                 <MenuItem>
                                     {/* <Typography>{fullName}</Typography> */}

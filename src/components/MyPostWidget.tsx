@@ -178,9 +178,11 @@ const MyPostWidget = () => {
                     disabled={!post}
                     onClick={handlePost}
                     sx={{
-                        color: palette.background.alt,
                         bgcolor: palette.primary.main,
                         borderRadius: "3rem",
+                    }}
+                    style={{
+                        color: palette.background.alt
                     }}
                 >
                     POST
