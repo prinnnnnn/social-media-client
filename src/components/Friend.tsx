@@ -27,6 +27,11 @@ const Friend: React.FC<FriendProps> = ({ friendId, name, subtitle, userPicturePa
     const userId = useAppSelector(state => state.user?._id); 
     const token = useAppSelector(state => state.token);
     const friends = useAppSelector(state => state.user?.friends);
+    // const state = useAppSelector(state => state)
+
+    // console.log(friendId)
+    // console.log(friends);
+    // console.log(state);   
 
     const primaryLight = palette.primary.light;
     const primaryDark = palette.primary.dark;

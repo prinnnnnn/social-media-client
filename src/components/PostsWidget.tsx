@@ -17,10 +17,17 @@ const PostsWidget: FC<PostsWidgetProps> = ({ isProfile = false }) => {
     const token = useAppSelector(state => state.token); 
 
     const getPosts = async () => {
-        const { data } = await axios.get(`${backendIpAddress}/posts`, 
-            { headers: { Authorization: `Bearer ${token}`}});
 
-        dispatch(setPosts({ posts: data }));
+        try {
+
+            const { data } = await axios.get(`${backendIpAddress}/posts/`, 
+                { headers: { Authorization: `Bearer ${token}`}});
+    
+            dispatch(setPosts({ posts: data }));
+
+        } catch (err) {
+            console.error(err);
+        }
 
     }
 

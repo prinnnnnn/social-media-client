@@ -27,7 +27,7 @@ const FriendListWidget: React.FC<FriendListWidgetProps> = ({ userId }) => {
     }
 
     const getFriends = async () => {
-        const { data } = await axios.get(`${backendIpAddress}/user/friends/${userId}`, 
+        const { data } = await axios.get(`${backendIpAddress}/user/${userId}/friends`, 
                                         { headers: { Authorization: `Bearer ${token}`}});
 
         dispatch(setFriends({ friends: data }));

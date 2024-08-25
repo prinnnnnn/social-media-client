@@ -73,6 +73,8 @@ const LoginForm = () => {
 
         formData.append('picturePath', values.picture.name);
 
+        console.log(formData.values())
+
         const { data } = await axios.post(`${backendIpAddress}/auth/register`, formData);
         
         // console.log(`Finish Register, data: ${data}`);

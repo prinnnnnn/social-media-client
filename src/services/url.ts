@@ -1,1 +1,1 @@
-export const backendIpAddress = `http://localhost:3001`;
+export const backendIpAddress = `http://localhost:5000`;

@@ -46,18 +46,25 @@ const PostWidget: React.FC<Props> = ({ index }) => {
 
     const patchLike = async () => {
 
-        const { data } = await axios.patch(
-            `${backendIpAddress}/posts/${post._id}/like`,
-            { userId: loggedInUserId },
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+        try {
+            
+            const { data } = await axios.patch(
+                `${backendIpAddress}/posts/${post._id}/like`,
+                { userId: loggedInUserId },
+                {   
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+    
+            dispatch(setPost({ post: data }));
+            
+        } catch (err) {
+            console.error(err);
+        }   
 
-        dispatch(setPost({ post: data }));
 
     };
 
